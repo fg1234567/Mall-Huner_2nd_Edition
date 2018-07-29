@@ -26,7 +26,6 @@ public class ItemCollection : MonoBehaviour {
     public Animator endGameAnim;
     public Animator itemNumberAnim;
     public Text itemNumber_Text;
-    int numOfItems = 0;
 
     public CanvasGroup itemCanvas;
     public CanvasGroup giftCanvas;
@@ -46,6 +45,7 @@ public class ItemCollection : MonoBehaviour {
     public string pear = "available";
     public string pumpkin = "available";
     public string orange = "available";
+    public int numbOfCollectedItems = 0;
 
     public void Awake () {
 
@@ -70,58 +70,50 @@ public class ItemCollection : MonoBehaviour {
             pear = data.pear;
             pumpkin = data.pumpkin;
             orange = data.orange;
+            numbOfCollectedItems = data.numbOfCollectedItems;
+
 
             // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-           
+
             if (apple == "collected")
             {
                 UnityEngine.UI.Image defPanel = GameObject.Find("apple+").GetComponent<UnityEngine.UI.Image>();
                 defPanel.color = UnityEngine.Color.green;
-                itemsList.Add("apple");
             }
             if (banana == "collected")
             {
                 UnityEngine.UI.Image defPanel = GameObject.Find("banana+").GetComponent<UnityEngine.UI.Image>();
                 defPanel.color = UnityEngine.Color.green;
-                itemsList.Add("banana");
             }
             if (bottle == "collected")
             {
                 UnityEngine.UI.Image defPanel = GameObject.Find("bottle+").GetComponent<UnityEngine.UI.Image>();
                 defPanel.color = UnityEngine.Color.green;
-                itemsList.Add("bottle");
             }
             if (cup == "collected")
             {
                 UnityEngine.UI.Image defPanel = GameObject.Find("cup+").GetComponent<UnityEngine.UI.Image>();
                 defPanel.color = UnityEngine.Color.green;
-                itemsList.Add("cup");
             }
             if (pear == "collected")
             {
                 UnityEngine.UI.Image defPanel = GameObject.Find("pear+").GetComponent<UnityEngine.UI.Image>();
                 defPanel.color = UnityEngine.Color.green;
-                itemsList.Add("pear");
             }
-            Debug.Log(pumpkin);
             if (pumpkin == "collected")
             {
                 UnityEngine.UI.Image defPanel = GameObject.Find("pumpkin+").GetComponent<UnityEngine.UI.Image>();
                 defPanel.color = UnityEngine.Color.green;
-                itemsList.Add("pumpkin");
             }
             if (orange == "collected")
             {
                 UnityEngine.UI.Image defPanel = GameObject.Find("orange+").GetComponent<UnityEngine.UI.Image>();
                 defPanel.color = UnityEngine.Color.green;
-                itemsList.Add("orange");
             }
             // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
         }
     }
-
-    List<string> itemsList = new List<string>();
 
     private void Update () {
 
@@ -208,28 +200,28 @@ public class ItemCollection : MonoBehaviour {
 
 
                                     //numOfItem is incremented each time an object is collected
-                                    numOfItems += 1;
+                                    numbOfCollectedItems += 1;
+
 
                                     // gets and sets the color of the panel named after the clicked object
                                     UnityEngine.UI.Image defPanel = GameObject.Find(touchedObj.name + "+").GetComponent<UnityEngine.UI.Image>();
                                     defPanel.color = UnityEngine.Color.green;
-                                    itemsList.Add(touchedObj.name);
                             
                                     //Updates the text on the screen with the number of the collected items
-                                    if(numOfItems == 1)
+                                    /*if(numOfItems == 1)
                                     {
                                         itemNumber_Text.text = "You have collected" + " " + numOfItems.ToString() + " " + "item";
                                     }
                                     else if(numOfItems > 1)
                                     {
                                         itemNumber_Text.text = "You have collected" + " " + numOfItems.ToString() + " " + "items";
-                                    }
+                                    }*/
 
                                     //When all objects are collected end game animation is collected
-                                    if (numOfItems == 6)
+                                    if (numbOfCollectedItems == 6)
                                     {
-                                        itemNumber_Text.text = "You have collected all items";
-                                        itemNumberAnim.enabled = true;
+                                        //itemNumber_Text.text = "You have collected all items";
+                                        //itemNumberAnim.enabled = true;
                                         endGameAnimationHolder.SetActive(true);
                                         endGameAnim.enabled = true;
                                     }
@@ -264,6 +256,8 @@ public class ItemCollection : MonoBehaviour {
                 playerdata.pear = pear;
                 playerdata.pumpkin = pumpkin;
                 playerdata.orange = orange;
+                playerdata.numbOfCollectedItems = numbOfCollectedItems;
+
 
                 bf.Serialize(file_1, playerdata);
                 file_1.Close();
@@ -280,6 +274,7 @@ public class ItemCollection : MonoBehaviour {
                 playerdata.pear = pear;
                 playerdata.pumpkin = pumpkin;
                 playerdata.orange = orange;
+                playerdata.numbOfCollectedItems = numbOfCollectedItems;
 
                 bf.Serialize(file_1, playerdata);
                 file_1.Close();
@@ -331,70 +326,11 @@ public class ItemCollection : MonoBehaviour {
             isItemHolderOpen = false;
         }
 
-        // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-        if (itemsList.Count == 1)
+        for (int i = 0; i < numbOfCollectedItems; i++)
         {
-            UnityEngine.UI.Image panel1 = GameObject.Find("giftPanel0").GetComponent<UnityEngine.UI.Image>();
-            panel1.color = UnityEngine.Color.green;
+            Image image = GameObject.Find("giftPanel" + i).GetComponent<Image>();
+            image.color = UnityEngine.Color.green;
         }
-        if (itemsList.Count == 2)
-        {
-            UnityEngine.UI.Image panel1 = GameObject.Find("giftPanel0").GetComponent<UnityEngine.UI.Image>();
-            panel1.color = UnityEngine.Color.green;
-            UnityEngine.UI.Image panel2 = GameObject.Find("giftPanel1").GetComponent<UnityEngine.UI.Image>();
-            panel2.color = UnityEngine.Color.green;
-        }
-        if (itemsList.Count == 3)
-        {
-            UnityEngine.UI.Image panel1 = GameObject.Find("giftPanel0").GetComponent<UnityEngine.UI.Image>();
-            panel1.color = UnityEngine.Color.green;
-            UnityEngine.UI.Image panel2 = GameObject.Find("giftPanel1").GetComponent<UnityEngine.UI.Image>();
-            panel2.color = UnityEngine.Color.green;
-            UnityEngine.UI.Image panel3 = GameObject.Find("giftPanel2").GetComponent<UnityEngine.UI.Image>();
-            panel3.color = UnityEngine.Color.green;
-        }
-        if (itemsList.Count == 4)
-        {
-            UnityEngine.UI.Image panel1 = GameObject.Find("giftPanel0").GetComponent<UnityEngine.UI.Image>();
-            panel1.color = UnityEngine.Color.green;
-            UnityEngine.UI.Image panel2 = GameObject.Find("giftPanel1").GetComponent<UnityEngine.UI.Image>();
-            panel2.color = UnityEngine.Color.green;
-            UnityEngine.UI.Image panel3 = GameObject.Find("giftPanel2").GetComponent<UnityEngine.UI.Image>();
-            panel3.color = UnityEngine.Color.green;
-            UnityEngine.UI.Image panel4 = GameObject.Find("giftPanel3").GetComponent<UnityEngine.UI.Image>();
-            panel4.color = UnityEngine.Color.green;
-        }
-        if (itemsList.Count == 5)
-        {
-            UnityEngine.UI.Image panel1 = GameObject.Find("giftPanel0").GetComponent<UnityEngine.UI.Image>();
-            panel1.color = UnityEngine.Color.green;
-            UnityEngine.UI.Image panel2 = GameObject.Find("giftPanel1").GetComponent<UnityEngine.UI.Image>();
-            panel2.color = UnityEngine.Color.green;
-            UnityEngine.UI.Image panel3 = GameObject.Find("giftPanel2").GetComponent<UnityEngine.UI.Image>();
-            panel3.color = UnityEngine.Color.green;
-            UnityEngine.UI.Image panel4 = GameObject.Find("giftPanel3").GetComponent<UnityEngine.UI.Image>();
-            panel4.color = UnityEngine.Color.green;
-            UnityEngine.UI.Image panel5 = GameObject.Find("giftPanel4").GetComponent<UnityEngine.UI.Image>();
-            panel5.color = UnityEngine.Color.green;
-        }
-        if (itemsList.Count == 6 || itemsList.Count > 6) // *** second condition is for testing purposes
-        {
-            UnityEngine.UI.Image panel1 = GameObject.Find("giftPanel0").GetComponent<UnityEngine.UI.Image>();
-            panel1.color = UnityEngine.Color.green;
-            UnityEngine.UI.Image panel2 = GameObject.Find("giftPanel1").GetComponent<UnityEngine.UI.Image>();
-            panel2.color = UnityEngine.Color.green;
-            UnityEngine.UI.Image panel3 = GameObject.Find("giftPanel2").GetComponent<UnityEngine.UI.Image>();
-            panel3.color = UnityEngine.Color.green;
-            UnityEngine.UI.Image panel4 = GameObject.Find("giftPanel3").GetComponent<UnityEngine.UI.Image>();
-            panel4.color = UnityEngine.Color.green;
-            UnityEngine.UI.Image panel5 = GameObject.Find("giftPanel4").GetComponent<UnityEngine.UI.Image>();
-            panel5.color = UnityEngine.Color.green;
-            UnityEngine.UI.Image panel6 = GameObject.Find("giftPanel5").GetComponent<UnityEngine.UI.Image>();
-            panel6.color = UnityEngine.Color.green;
-        }
-
-        // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
     }
 
@@ -413,4 +349,5 @@ class PlayerData
     public string pear;
     public string pumpkin;
     public string orange;
+    public int numbOfCollectedItems;
 }

@@ -1,9 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
+
+using UnityEngine;
+using UnityEngine.UI;
+
 
 
 public class UserMenuButtonFunctionalities : MonoBehaviour {
@@ -28,11 +32,30 @@ public class UserMenuButtonFunctionalities : MonoBehaviour {
     
     public void MapButtonClick()
     {
-        Debug.Log("map button clicked");
+        SceneManager.LoadScene(4);
     }
 
     public void ResetButtonClick()
     {
-        Debug.Log("reset button clicked");
+        if (File.Exists(Application.persistentDataPath + "/playerInfo.dat"))
+        {
+            BinaryFormatter bf = new BinaryFormatter();
+            FileStream file = File.Open(Application.persistentDataPath + "/playerInfo.dat", FileMode.Open);
+            PlayerData data = new PlayerData();
+
+            data.apple = "available";
+            data.banana = "available";
+            data.bottle = "available";
+            data.cup = "available";
+            data.pear = "available";
+            data.pumpkin = "available";
+            data.orange = "available";
+            data.numbOfCollectedItems = 0;
+
+
+            bf.Serialize(file, data);
+            file.Close();
+
+        }
     }
 }

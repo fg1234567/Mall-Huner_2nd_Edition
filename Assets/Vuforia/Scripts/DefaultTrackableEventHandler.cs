@@ -8,6 +8,9 @@ Confidential and Proprietary - Protected under copyright and other laws.
 
 using UnityEngine;
 using Vuforia;
+using System;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.IO;
 
 /// <summary>
 /// A custom handler that implements the ITrackableEventHandler interface.
@@ -24,6 +27,8 @@ public class DefaultTrackableEventHandler : MonoBehaviour, ITrackableEventHandle
     #endregion // PROTECTED_MEMBER_VARIABLES
 
     #region UNITY_MONOBEHAVIOUR_METHODS
+
+    string availabilty;
 
     protected virtual void Start()
     {
@@ -82,10 +87,86 @@ public class DefaultTrackableEventHandler : MonoBehaviour, ITrackableEventHandle
         var colliderComponents = GetComponentsInChildren<Collider>(true);
         var canvasComponents = GetComponentsInChildren<Canvas>(true);
 
-        // Enable rendering:
-        foreach (var component in rendererComponents)
-            component.enabled = true;
+        if (File.Exists(Application.persistentDataPath + "/playerInfo.dat"))
+        {
+            BinaryFormatter bf = new BinaryFormatter();
+            FileStream file = File.Open(Application.persistentDataPath + "/playerInfo.dat", FileMode.Open);
 
+            PlayerData gamedata = (PlayerData)bf.Deserialize(file);
+            file.Close();
+
+            if (colliderComponents[0].name == "apple")
+            {
+                availabilty = gamedata.apple;
+            }
+
+            if (colliderComponents[0].name == "banana")
+            {
+                availabilty = gamedata.banana;
+            }
+
+            if (colliderComponents[0].name == "bottle")
+            {
+                availabilty = gamedata.bottle;
+            }
+
+            if (colliderComponents[0].name == "cup")
+            {
+                availabilty = gamedata.cup;
+            }
+
+            if (colliderComponents[0].name == "pear")
+            {
+                availabilty = gamedata.pear;
+            }
+
+            if (colliderComponents[0].name == "pumpkin")
+            {
+                availabilty = gamedata.pumpkin;
+            }
+
+            if (colliderComponents[0].name == "orange")
+            {
+                availabilty = gamedata.orange;
+            }
+
+
+            if (availabilty != null)
+            {
+                if (availabilty == "collected")
+                {
+                    // Enable rendering:
+                    foreach (var component in rendererComponents)
+                    {
+                        component.enabled = true;
+                        Color color = component.GetComponent<Renderer>().material.color;
+                        color.a = 0.40f; //approximately 100/255
+                        component.GetComponent<Renderer>().material.color = color;
+                    }
+                }
+                else
+                {
+                    foreach (var component in rendererComponents)
+                    {
+                        component.enabled = true;
+                        Color color = component.GetComponent<Renderer>().material.color;
+                        color.a = 1.00f; //approximately 100/255
+                        component.GetComponent<Renderer>().material.color = color;
+                    }
+                }
+            }
+        }
+        else
+        {
+            foreach (var component in rendererComponents)
+            {
+                component.enabled = true;
+            }
+        }
+               
+        
+
+        
         // Enable colliders:
         foreach (var component in colliderComponents)
             component.enabled = true;
@@ -117,3 +198,4 @@ public class DefaultTrackableEventHandler : MonoBehaviour, ITrackableEventHandle
 
     #endregion // PROTECTED_METHODS
 }
+
