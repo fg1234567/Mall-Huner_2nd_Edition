@@ -1,18 +1,18 @@
 ﻿//====================================================================
-// Initialized :13.7.2018  12.30
-// Last edited :24.7.2018  13.05 
+// Initialized :18.7.2018  12.30
+// Last edited :29.7.2018  13.30 
 //====================================================================
 
+using System;
+using System.IO;
 using System.Collections;
 using System.Collections.Generic;
-using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
-using System;
 
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 
 public class ItemCollection : MonoBehaviour {
@@ -36,16 +36,15 @@ public class ItemCollection : MonoBehaviour {
     UnityEngine.UI.Image defPanel;
 
     public GameObject endGameAnimationHolder;
-
-
-    public string apple = "available";
-    public string banana = "available";
-    public string bottle = "available";
-    public string cup = "available";
-    public string pear = "available";
-    public string pumpkin = "available";
-    public string orange = "available";
-    public int numbOfCollectedItems = 0;
+        
+    string apple = "available";
+    string banana = "available";
+    string bottle = "available";
+    string cup = "available";
+    string pear = "available";
+    string pumpkin  = "available";
+    string orange = "available";
+    int numbOfCollectedItems = 0;
 
     public void Awake () {
 
@@ -55,10 +54,11 @@ public class ItemCollection : MonoBehaviour {
 
     public void Start()
     {
-        if(File.Exists(Application.persistentDataPath + "/playerInfo.dat"))
+        if(File.Exists(Application.persistentDataPath + "/gameData.dat"))
         {
+            Debug.Log("file exist");
             BinaryFormatter bf = new BinaryFormatter();
-            FileStream file = File.Open(Application.persistentDataPath + "/playerInfo.dat", FileMode.Open);
+            FileStream file = File.Open(Application.persistentDataPath + "/gameData.dat", FileMode.Open);
 
             PlayerData data = (PlayerData)bf.Deserialize(file);
             file.Close();
@@ -116,8 +116,7 @@ public class ItemCollection : MonoBehaviour {
     }
 
     private void Update () {
-
-       
+               
         //Checks whether the mouse left button is pressed
         if (Input.GetMouseButtonDown(0)){
 
@@ -244,28 +243,10 @@ public class ItemCollection : MonoBehaviour {
         if (Input.GetKey(KeyCode.Escape))
         {
             
-            if(File.Exists(Application.persistentDataPath + "/playerInfo.dat"))
+            if(File.Exists(Application.persistentDataPath + "/gameData.dat"))
             {
                 BinaryFormatter bf = new BinaryFormatter();
-                FileStream file_1 = File.Open(Application.persistentDataPath + "/playerInfo.dat", FileMode.Open);
-                PlayerData playerdata = new PlayerData();
-                playerdata.apple = apple;
-                playerdata.banana = banana;
-                playerdata.bottle = bottle;
-                playerdata.cup = cup;
-                playerdata.pear = pear;
-                playerdata.pumpkin = pumpkin;
-                playerdata.orange = orange;
-                playerdata.numbOfCollectedItems = numbOfCollectedItems;
-
-
-                bf.Serialize(file_1, playerdata);
-                file_1.Close();
-            }
-            else //Only in the first play
-            {
-                BinaryFormatter bf = new BinaryFormatter();
-                FileStream file_1 = File.Create(Application.persistentDataPath + "/playerInfo.dat");
+                FileStream file_1 = File.Open(Application.persistentDataPath + "/gameData.dat", FileMode.Open);
                 PlayerData playerdata = new PlayerData();
                 playerdata.apple = apple;
                 playerdata.banana = banana;
@@ -279,7 +260,24 @@ public class ItemCollection : MonoBehaviour {
                 bf.Serialize(file_1, playerdata);
                 file_1.Close();
             }
-            
+            else
+            {
+                BinaryFormatter bf = new BinaryFormatter();
+                FileStream file_1 = File.Create(Application.persistentDataPath + "/gameData.dat");
+                PlayerData playerdata = new PlayerData();
+                playerdata.apple = apple;
+                playerdata.banana = banana;
+                playerdata.bottle = bottle;
+                playerdata.cup = cup;
+                playerdata.pear = pear;
+                playerdata.pumpkin = pumpkin;
+                playerdata.orange = orange;
+                playerdata.numbOfCollectedItems = numbOfCollectedItems;
+
+                bf.Serialize(file_1, playerdata);
+                file_1.Close();
+            }
+
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
             Debug.Log(Application.persistentDataPath);
         }

@@ -87,14 +87,14 @@ public class DefaultTrackableEventHandler : MonoBehaviour, ITrackableEventHandle
         var colliderComponents = GetComponentsInChildren<Collider>(true);
         var canvasComponents = GetComponentsInChildren<Canvas>(true);
 
-        if (File.Exists(Application.persistentDataPath + "/playerInfo.dat"))
+        if (File.Exists(Application.persistentDataPath + "/gameData.dat"))
         {
             BinaryFormatter bf = new BinaryFormatter();
-            FileStream file = File.Open(Application.persistentDataPath + "/playerInfo.dat", FileMode.Open);
+            FileStream file = File.Open(Application.persistentDataPath + "/gameData.dat", FileMode.Open);
 
             PlayerData gamedata = (PlayerData)bf.Deserialize(file);
             file.Close();
-
+                        
             if (colliderComponents[0].name == "apple")
             {
                 availabilty = gamedata.apple;
@@ -143,6 +143,7 @@ public class DefaultTrackableEventHandler : MonoBehaviour, ITrackableEventHandle
                         color.a = 0.40f; //approximately 100/255
                         component.GetComponent<Renderer>().material.color = color;
                     }
+                    Debug.Log("availability collected");
                 }
                 else
                 {
@@ -153,7 +154,17 @@ public class DefaultTrackableEventHandler : MonoBehaviour, ITrackableEventHandle
                         color.a = 1.00f; //approximately 100/255
                         component.GetComponent<Renderer>().material.color = color;
                     }
+                    Debug.Log("availability available");
+
                 }
+            }
+            else
+            {
+                foreach (var component in rendererComponents)
+                {
+                    component.enabled = true;
+                }
+                Debug.Log("availablity is null");
             }
         }
         else
@@ -162,11 +173,10 @@ public class DefaultTrackableEventHandler : MonoBehaviour, ITrackableEventHandle
             {
                 component.enabled = true;
             }
+            Debug.Log("File does not exist");
         }
                
-        
-
-        
+                        
         // Enable colliders:
         foreach (var component in colliderComponents)
             component.enabled = true;

@@ -1,8 +1,14 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿//====================================================================
+// Initialized :27.7.2018  12.30
+// Last edited :29.7.2018  13.30 
+//====================================================================
+
 using System;
 using System.IO;
+using System.Collections;
+using System.Collections.Generic;
 using System.Runtime.Serialization.Formatters.Binary;
+
 using UnityEngine;
 
 public class ColorChange_Items : MonoBehaviour
@@ -10,10 +16,10 @@ public class ColorChange_Items : MonoBehaviour
 
     public void Start()
     {
-        if (File.Exists(Application.persistentDataPath + "/playerInfo.dat"))
+        if (File.Exists(Application.persistentDataPath + "/gameData.dat"))
         {
             BinaryFormatter bf = new BinaryFormatter();
-            FileStream file = File.Open(Application.persistentDataPath + "/playerInfo.dat", FileMode.Open);
+            FileStream file = File.Open(Application.persistentDataPath + "/gameData.dat", FileMode.Open);
 
             PlayerData data = (PlayerData)bf.Deserialize(file);
             file.Close();

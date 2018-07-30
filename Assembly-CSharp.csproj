@@ -61,10 +61,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\ChangeColor_PositionIcons.cs" />
+    <Compile Include="Assets\Scripts\ChangeColor_PositionIcons.cs" />
     <Compile Include="Assets\Scripts\CollorChange_Gifts.cs" />
     <Compile Include="Assets\Scripts\ColorChange_Items.cs" />
     <Compile Include="Assets\Scripts\ItemCollection.cs" />
+    <Compile Include="Assets\Scripts\LoginFunctionality.cs" />
+    <Compile Include="Assets\Scripts\ResizeMap.cs" />
     <Compile Include="Assets\Scripts\SceneChange.cs" />
     <Compile Include="Assets\Scripts\UserMenuButtonFunctionalities.cs" />
     <Compile Include="Assets\Vuforia\Scripts\DefaultInitializationErrorHandler.cs" />
