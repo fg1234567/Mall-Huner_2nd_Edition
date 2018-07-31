@@ -119,19 +119,37 @@ public class ItemCollection : MonoBehaviour {
                         Debug.Log("Touched silverCoinCount: " + scoreData.silverCoinCount);
                         Debug.Log("Touched goldCoinCount: " + scoreData.goldCoinCount);
 
+                        scoreDataFile.Close();
 
                         if(scoreData.Contains(touchedObj.name, touchedObj.tag))
                         {
                             print("Item already collected!");
                             //fadeOutAnim.enabled = false;
-                            scoreDataFile.Close();
+                            //scoreDataFile.Close();
                         } else{
+                            
+                            scoreDataFile = File.Open(Application.persistentDataPath + "/scoreData.dat", FileMode.Open);
                             print("Item available now");
                             scoreData.CollectCoin(touchedObj.name, touchedObj.tag);
                             bf.Serialize(scoreDataFile, scoreData);
                             fadeOutAnim.enabled = true;
                             scoreDataFile.Close();
-                        }                                                          
+                        }
+
+                        Debug.Log("Touched 2 bronzeCoinCount: " + scoreData.bronzeCoinCount);
+                        Debug.Log("Touched 2 silverCoinCount: " + scoreData.silverCoinCount);
+                        Debug.Log("Touched 2 goldCoinCount: " + scoreData.goldCoinCount);
+
+                        scoreDataFile = File.Open(Application.persistentDataPath + "/scoreData.dat", FileMode.Open);
+                        scoreData = (ScoreData)bf.Deserialize(scoreDataFile);
+
+                        Debug.Log("Touched 3 bronzeCoinCount: " + scoreData.bronzeCoinCount);
+                        Debug.Log("Touched 3 silverCoinCount: " + scoreData.silverCoinCount);
+                        Debug.Log("Touched 3 goldCoinCount: " + scoreData.goldCoinCount);
+
+                        scoreDataFile.Close();
+
+
 
                     }
                     else
