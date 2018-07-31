@@ -17,6 +17,9 @@ public class ChangeColor_PositionIcons : MonoBehaviour {
 
     public void Start()
     {
+
+        /*
+
         if (File.Exists(Application.persistentDataPath + "/gameData.dat"))
         {
             Debug.Log("file exist");
@@ -86,6 +89,7 @@ public class ChangeColor_PositionIcons : MonoBehaviour {
             }
             // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         }
+        */
     }
 
     public void Update()

@@ -30,6 +30,10 @@ public class DefaultTrackableEventHandler : MonoBehaviour, ITrackableEventHandle
 
     string availabilty;
 
+    public BinaryFormatter bf = new BinaryFormatter();
+    public FileStream scoreDataFile;
+    public ScoreData scoreData;
+    
     protected virtual void Start()
     {
         mTrackableBehaviour = GetComponent<TrackableBehaviour>();
@@ -87,92 +91,56 @@ public class DefaultTrackableEventHandler : MonoBehaviour, ITrackableEventHandle
         var colliderComponents = GetComponentsInChildren<Collider>(true);
         var canvasComponents = GetComponentsInChildren<Canvas>(true);
 
-        if (File.Exists(Application.persistentDataPath + "/gameData.dat"))
+        if (File.Exists(Application.persistentDataPath + "/scoreData.dat"))
         {
-            BinaryFormatter bf = new BinaryFormatter();
-            FileStream file = File.Open(Application.persistentDataPath + "/gameData.dat", FileMode.Open);
 
-            PlayerData gamedata = (PlayerData)bf.Deserialize(file);
-            file.Close();
-                        
-            if (colliderComponents[0].name == "apple")
+            print("TEST123");
+
+            scoreDataFile = File.Open(Application.persistentDataPath + "/scoreData.dat", FileMode.Open);
+            
+            print("TEST456");
+            
+            scoreData = (ScoreData)bf.Deserialize(scoreDataFile);
+            
+            print("TEST789");
+            
+            scoreDataFile.Close();
+
+
+            print("TAG and Name");
+            
+            print(colliderComponents[0].tag);
+            print(colliderComponents[0].name);
+            
+
+            if(scoreData.Contains(colliderComponents[0].name, colliderComponents[0].tag))
             {
-                availabilty = gamedata.apple;
-            }
-
-            if (colliderComponents[0].name == "banana")
-            {
-                availabilty = gamedata.banana;
-            }
-
-            if (colliderComponents[0].name == "bottle")
-            {
-                availabilty = gamedata.bottle;
-            }
-
-            if (colliderComponents[0].name == "cup")
-            {
-                availabilty = gamedata.cup;
-            }
-
-            if (colliderComponents[0].name == "pear")
-            {
-                availabilty = gamedata.pear;
-            }
-
-            if (colliderComponents[0].name == "pumpkin")
-            {
-                availabilty = gamedata.pumpkin;
-            }
-
-            if (colliderComponents[0].name == "orange")
-            {
-                availabilty = gamedata.orange;
-            }
-
-
-            if (availabilty != null)
-            {
-                if (availabilty == "collected")
-                {
-                    // Enable rendering:
-                    foreach (var component in rendererComponents)
-                    {
-                        component.enabled = true;
-                        Color color = component.GetComponent<Renderer>().material.color;
-                        color.a = 0.40f; //approximately 100/255
-                        component.GetComponent<Renderer>().material.color = color;
-                    }
-                    Debug.Log("availability collected");
-                }
-                else
-                {
-                    foreach (var component in rendererComponents)
-                    {
-                        component.enabled = true;
-                        Color color = component.GetComponent<Renderer>().material.color;
-                        color.a = 1.00f; //approximately 100/255
-                        component.GetComponent<Renderer>().material.color = color;
-                    }
-                    Debug.Log("availability available");
-
-                }
-            }
-            else
-            {
+                print("Vuforia Item already collected!");
                 foreach (var component in rendererComponents)
                 {
                     component.enabled = true;
+                    Color color = component.GetComponent<Renderer>().material.color;
+                    color.a = 0.40f; //approximately 100/255
+                    component.GetComponent<Renderer>().material.color = color;
                 }
-                Debug.Log("availablity is null");
-            }
+
+            } else{
+
+                print("Vuforia Item available!");
+                
+                foreach (var component in rendererComponents)
+                {
+                    component.enabled = true;
+                    Color color = component.GetComponent<Renderer>().material.color;
+                    color.a = 1.00f; //approximately 100/255
+                    component.GetComponent<Renderer>().material.color = color;
+                }
+            }   
+     
         }
         else
         {
-            foreach (var component in rendererComponents)
-            {
-                component.enabled = true;
-            }
+
             Debug.Log("File does not exist");
         }
                

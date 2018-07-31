@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class ResizeMap : MonoBehaviour {
 
+/*
     float lastClickTime = -1.50f;
     float allowedTimeInterval = 1.50f;
 
@@ -12,7 +13,7 @@ public class ResizeMap : MonoBehaviour {
     public RawImage marker1;
     public RawImage marker2;
     bool isMapLarge = false;
-    
+*/
     public void Update()
     {
         /*if (Input.GetMouseButtonDown(0))

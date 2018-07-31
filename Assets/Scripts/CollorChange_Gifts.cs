@@ -16,6 +16,7 @@ public class CollorChange_Gifts : MonoBehaviour {
 
     public void Start()
     {
+        /*
         if (File.Exists(Application.persistentDataPath + "/gameData.dat"))
         {
             BinaryFormatter bf = new BinaryFormatter();
@@ -31,6 +32,7 @@ public class CollorChange_Gifts : MonoBehaviour {
             }                     
 
         }
+        */
         
     }
 }

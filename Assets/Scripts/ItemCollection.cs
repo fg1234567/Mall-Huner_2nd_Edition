@@ -19,7 +19,7 @@ public class ItemCollection : MonoBehaviour {
 
     public static ItemCollection cameraScene;
 
-	string availability;
+	bool availability;
 
     Animator fadeOutAnim;
 
@@ -36,15 +36,10 @@ public class ItemCollection : MonoBehaviour {
     UnityEngine.UI.Image defPanel;
 
     public GameObject endGameAnimationHolder;
-        
-    string apple = "available";
-    string banana = "available";
-    string bottle = "available";
-    string cup = "available";
-    string pear = "available";
-    string pumpkin  = "available";
-    string orange = "available";
-    int numbOfCollectedItems = 0;
+
+    public FileStream scoreDataFile;
+    public ScoreData scoreData;
+    //public BinaryFormatter bf = new BinaryFormatter();
 
     public void Awake () {
 
@@ -54,62 +49,32 @@ public class ItemCollection : MonoBehaviour {
 
     public void Start()
     {
-        if(File.Exists(Application.persistentDataPath + "/gameData.dat"))
+        if(File.Exists(Application.persistentDataPath + "/scoreData.dat"))
         {
-            Debug.Log("file exist");
+            Debug.Log("score Data file exists");
+            
+
             BinaryFormatter bf = new BinaryFormatter();
-            FileStream file = File.Open(Application.persistentDataPath + "/gameData.dat", FileMode.Open);
 
-            PlayerData data = (PlayerData)bf.Deserialize(file);
-            file.Close();
+            scoreDataFile = File.Open(Application.persistentDataPath + "/scoreData.dat", FileMode.Open);
+            scoreData = (ScoreData)bf.Deserialize(scoreDataFile);
+            scoreDataFile.Close();
 
-            apple = data.apple;
-            banana = data.banana;
-            bottle = data.bottle;
-            cup = data.cup;
-            pear = data.pear;
-            pumpkin = data.pumpkin;
-            orange = data.orange;
-            numbOfCollectedItems = data.numbOfCollectedItems;
+
+
+            Text BronzeCount = GameObject.Find("BronzeCountText").GetComponent<Text>();
+            BronzeCount.text = "Bronze: " + scoreData.bronzeCoinCount;
+
+            Text SilverCount = GameObject.Find("SilverCountText").GetComponent<Text>();
+            SilverCount.text = "Silver: " + scoreData.silverCoinCount;
+
+            Text GoldCount = GameObject.Find("GoldCountText").GetComponent<Text>();
+            GoldCount.text = "Gold: " + scoreData.goldCoinCount;
 
 
             // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-            if (apple == "collected")
-            {
-                UnityEngine.UI.Image defPanel = GameObject.Find("apple+").GetComponent<UnityEngine.UI.Image>();
-                defPanel.color = UnityEngine.Color.green;
-            }
-            if (banana == "collected")
-            {
-                UnityEngine.UI.Image defPanel = GameObject.Find("banana+").GetComponent<UnityEngine.UI.Image>();
-                defPanel.color = UnityEngine.Color.green;
-            }
-            if (bottle == "collected")
-            {
-                UnityEngine.UI.Image defPanel = GameObject.Find("bottle+").GetComponent<UnityEngine.UI.Image>();
-                defPanel.color = UnityEngine.Color.green;
-            }
-            if (cup == "collected")
-            {
-                UnityEngine.UI.Image defPanel = GameObject.Find("cup+").GetComponent<UnityEngine.UI.Image>();
-                defPanel.color = UnityEngine.Color.green;
-            }
-            if (pear == "collected")
-            {
-                UnityEngine.UI.Image defPanel = GameObject.Find("pear+").GetComponent<UnityEngine.UI.Image>();
-                defPanel.color = UnityEngine.Color.green;
-            }
-            if (pumpkin == "collected")
-            {
-                UnityEngine.UI.Image defPanel = GameObject.Find("pumpkin+").GetComponent<UnityEngine.UI.Image>();
-                defPanel.color = UnityEngine.Color.green;
-            }
-            if (orange == "collected")
-            {
-                UnityEngine.UI.Image defPanel = GameObject.Find("orange+").GetComponent<UnityEngine.UI.Image>();
-                defPanel.color = UnityEngine.Color.green;
-            }
+
             // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
         }
@@ -139,96 +104,34 @@ public class ItemCollection : MonoBehaviour {
 
 					GameObject touchedObj = hit.transform.gameObject;
 
-					PrintName(touchedObj);
+					print(touchedObj.name);
                 
 					fadeOutAnim = (Animator)touchedObj.GetComponent(typeof(Animator));
 					if(fadeOutAnim){
+
+                        BinaryFormatter bf = new BinaryFormatter();
                        
                         // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-                        
-                        if(touchedObj.name == "apple")
+                        scoreDataFile = File.Open(Application.persistentDataPath + "/scoreData.dat", FileMode.Open);
+                        scoreData = (ScoreData)bf.Deserialize(scoreDataFile);
+
+                        Debug.Log("Touched bronzeCoinCount: " + scoreData.bronzeCoinCount);
+                        Debug.Log("Touched silverCoinCount: " + scoreData.silverCoinCount);
+                        Debug.Log("Touched goldCoinCount: " + scoreData.goldCoinCount);
+
+
+                        if(scoreData.Contains(touchedObj.name, touchedObj.tag))
                         {
-                            availability = apple;
-                            apple = "collected";
-                        }
-                        
-                        else if (touchedObj.name == "bottle")
-                        {
-                            availability = bottle;
-                            bottle = "collected";
-                        }
-
-                        else if (touchedObj.name == "cup")
-                        {
-                            availability = cup;
-                            cup = "collected";
-                        }
-
-                        else if (touchedObj.name == "orange")
-                        {
-                            availability = orange;
-                            orange = "collected";
-                        }
-
-                        else if (touchedObj.name == "pumpkin")
-                        {
-                            availability = pumpkin;
-                            pumpkin = "collected";
-                        }
-
-                        else if (touchedObj.name == "banana")
-                        {
-                            availability = banana;
-                            banana = "collected";
-                        }
-                        
-                        else if (touchedObj.name == "pear")
-                        {
-                            availability = pear;
-                            pear = "collected";
-                        }
-
-                        // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-
-                        print("Availibility: " + availability);
-
-                                //Checks wether the object is collected and activates the animation of the touched object
-                                if(availability == "available"){
-                                    fadeOutAnim.enabled = true;
-
-
-                                    //numOfItem is incremented each time an object is collected
-                                    numbOfCollectedItems += 1;
-
-
-                                    // gets and sets the color of the panel named after the clicked object
-                                    UnityEngine.UI.Image defPanel = GameObject.Find(touchedObj.name + "+").GetComponent<UnityEngine.UI.Image>();
-                                    defPanel.color = UnityEngine.Color.green;
-                            
-                                    //Updates the text on the screen with the number of the collected items
-                                    /*if(numOfItems == 1)
-                                    {
-                                        itemNumber_Text.text = "You have collected" + " " + numOfItems.ToString() + " " + "item";
-                                    }
-                                    else if(numOfItems > 1)
-                                    {
-                                        itemNumber_Text.text = "You have collected" + " " + numOfItems.ToString() + " " + "items";
-                                    }*/
-
-                                    //When all objects are collected end game animation is collected
-                                    if (numbOfCollectedItems == 6)
-                                    {
-                                        //itemNumber_Text.text = "You have collected all items";
-                                        //itemNumberAnim.enabled = true;
-                                        endGameAnimationHolder.SetActive(true);
-                                        endGameAnim.enabled = true;
-                                    }
-
-                                }else{
-                                    print("Item already collected!");
-                                    fadeOutAnim.enabled = false;
-                                }                             
+                            print("Item already collected!");
+                            //fadeOutAnim.enabled = false;
+                            scoreDataFile.Close();
+                        } else{
+                            print("Item available now");
+                            scoreData.CollectCoin(touchedObj.name, touchedObj.tag);
+                            bf.Serialize(scoreDataFile, scoreData);
+                            fadeOutAnim.enabled = true;
+                            scoreDataFile.Close();
+                        }                                                          
 
                     }
                     else
@@ -243,40 +146,6 @@ public class ItemCollection : MonoBehaviour {
         if (Input.GetKey(KeyCode.Escape))
         {
             
-            if(File.Exists(Application.persistentDataPath + "/gameData.dat"))
-            {
-                BinaryFormatter bf = new BinaryFormatter();
-                FileStream file_1 = File.Open(Application.persistentDataPath + "/gameData.dat", FileMode.Open);
-                PlayerData playerdata = new PlayerData();
-                playerdata.apple = apple;
-                playerdata.banana = banana;
-                playerdata.bottle = bottle;
-                playerdata.cup = cup;
-                playerdata.pear = pear;
-                playerdata.pumpkin = pumpkin;
-                playerdata.orange = orange;
-                playerdata.numbOfCollectedItems = numbOfCollectedItems;
-
-                bf.Serialize(file_1, playerdata);
-                file_1.Close();
-            }
-            else
-            {
-                BinaryFormatter bf = new BinaryFormatter();
-                FileStream file_1 = File.Create(Application.persistentDataPath + "/gameData.dat");
-                PlayerData playerdata = new PlayerData();
-                playerdata.apple = apple;
-                playerdata.banana = banana;
-                playerdata.bottle = bottle;
-                playerdata.cup = cup;
-                playerdata.pear = pear;
-                playerdata.pumpkin = pumpkin;
-                playerdata.orange = orange;
-                playerdata.numbOfCollectedItems = numbOfCollectedItems;
-
-                bf.Serialize(file_1, playerdata);
-                file_1.Close();
-            }
 
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
             Debug.Log(Application.persistentDataPath);
@@ -324,28 +193,16 @@ public class ItemCollection : MonoBehaviour {
             isItemHolderOpen = false;
         }
 
+        /*
         for (int i = 0; i < numbOfCollectedItems; i++)
         {
             Image image = GameObject.Find("giftPanel" + i).GetComponent<Image>();
             image.color = UnityEngine.Color.green;
         }
+        */
 
     }
 
-    private void PrintName(GameObject go){
-    	print(go.name);
-    }
+
 }
 
-[Serializable]
-class PlayerData
-{
-    public string apple;
-    public string banana;
-    public string bottle;
-    public string cup;
-    public string pear;
-    public string pumpkin;
-    public string orange;
-    public int numbOfCollectedItems;
-}

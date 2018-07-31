@@ -16,6 +16,7 @@ public class ColorChange_Items : MonoBehaviour
 
     public void Start()
     {
+        /*
         if (File.Exists(Application.persistentDataPath + "/gameData.dat"))
         {
             BinaryFormatter bf = new BinaryFormatter();
@@ -64,6 +65,7 @@ public class ColorChange_Items : MonoBehaviour
             // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
         }
+        */
 
 
     }
