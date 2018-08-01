@@ -80,6 +80,28 @@ public class ItemCollection : MonoBehaviour {
         }
     }
 
+    private void UpdateItemsHolderPanel(string coinTag){ // updates ItemsHolderPanel according to coinTag when new coin is collected
+
+        if(coinTag == "bronzeCoin"){
+            
+            Text BronzeCount = GameObject.Find("BronzeCountText").GetComponent<Text>();
+            BronzeCount.text = "Bronze: " + scoreData.bronzeCoinCount;
+        
+        } else if(coinTag == "silverCoin"){
+            
+            Text SilverCount = GameObject.Find("SilverCountText").GetComponent<Text>();
+            SilverCount.text = "Silver: " + scoreData.silverCoinCount;
+
+        } else if(coinTag == "goldCoin"){
+            
+            Text GoldCount = GameObject.Find("GoldCountText").GetComponent<Text>();
+            GoldCount.text = "Gold: " + scoreData.goldCoinCount;
+        }
+
+
+
+    }
+
     private void Update () {
                
         //Checks whether the mouse left button is pressed
@@ -130,7 +152,11 @@ public class ItemCollection : MonoBehaviour {
                             
                             scoreDataFile = File.Open(Application.persistentDataPath + "/scoreData.dat", FileMode.Open);
                             print("Item available now");
+                            
                             scoreData.CollectCoin(touchedObj.name, touchedObj.tag);
+
+                            UpdateItemsHolderPanel(touchedObj.tag);
+
                             bf.Serialize(scoreDataFile, scoreData);
                             fadeOutAnim.enabled = true;
                             scoreDataFile.Close();

@@ -10,62 +10,39 @@ using System.Collections.Generic;
 using System.Runtime.Serialization.Formatters.Binary;
 
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class ColorChange_Items : MonoBehaviour
 {
 
     public void Start()
     {
-        /*
-        if (File.Exists(Application.persistentDataPath + "/gameData.dat"))
+        
+        if (File.Exists(Application.persistentDataPath + "/scoreData.dat"))
         {
             BinaryFormatter bf = new BinaryFormatter();
-            FileStream file = File.Open(Application.persistentDataPath + "/gameData.dat", FileMode.Open);
+            FileStream scoreDataFile = File.Open(Application.persistentDataPath + "/scoreData.dat", FileMode.Open);
 
-            PlayerData data = (PlayerData)bf.Deserialize(file);
-            file.Close();
+            ScoreData scoreData = (ScoreData)bf.Deserialize(scoreDataFile);
+            scoreDataFile.Close();
 
-            // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            Text BronzeCoinCountText = GameObject.Find("BronzeCoinCountText").GetComponent<Text>();
+            BronzeCoinCountText.text = "Bronze: " + scoreData.bronzeCoinCount;
 
-            if (data.apple == "collected")
-            {
-                UnityEngine.UI.Button button_1 = GameObject.Find("apple+").GetComponent<UnityEngine.UI.Button>();
-                button_1.image.color = UnityEngine.Color.green;
-            }
-            if (data.banana == "collected")
-            {
-                UnityEngine.UI.Button button_1 = GameObject.Find("banana+").GetComponent<UnityEngine.UI.Button>();
-                button_1.image.color = UnityEngine.Color.green;
-            }
-            if (data.bottle == "collected")
-            {
-                UnityEngine.UI.Button button_1 = GameObject.Find("bottle+").GetComponent<UnityEngine.UI.Button>();
-                button_1.image.color = UnityEngine.Color.green;
-            }
-            if (data.cup == "collected")
-            {
-                UnityEngine.UI.Button button_1 = GameObject.Find("cup+").GetComponent<UnityEngine.UI.Button>();
-                button_1.image.color = UnityEngine.Color.green;
-            }
-            if (data.pear == "collected")
-            {
-                UnityEngine.UI.Button button_1 = GameObject.Find("pear+").GetComponent<UnityEngine.UI.Button>();
-                button_1.image.color = UnityEngine.Color.green;
-            }
-            if (data.pumpkin == "collected")
-            {
-                UnityEngine.UI.Button button_1 = GameObject.Find("pumpkin+").GetComponent<UnityEngine.UI.Button>();
-                button_1.image.color = UnityEngine.Color.green;
-            }
-            if (data.orange == "collected")
-            {
-                UnityEngine.UI.Button button_1 = GameObject.Find("orange+").GetComponent<UnityEngine.UI.Button>();
-                button_1.image.color = UnityEngine.Color.green;
-            }
+
+            Text SilverCoinCountText = GameObject.Find("SilverCoinCountText").GetComponent<Text>();
+            SilverCoinCountText.text = "Silver: " + scoreData.silverCoinCount;
+
+
+            Text GoldCoinCountText = GameObject.Find("GoldCoinCountText").GetComponent<Text>();
+            GoldCoinCountText.text = "Gold: " + scoreData.goldCoinCount;
+
             // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
         }
-        */
+        
 
 
     }
