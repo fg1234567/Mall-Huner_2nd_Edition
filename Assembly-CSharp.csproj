@@ -66,8 +66,10 @@
     <Compile Include="Assets\Scripts\ColorChange_Items.cs" />
     <Compile Include="Assets\Scripts\ItemCollection.cs" />
     <Compile Include="Assets\Scripts\LoginFunctionality.cs" />
+    <Compile Include="Assets\Scripts\PlayerInfo.cs" />
     <Compile Include="Assets\Scripts\ResizeMap.cs" />
     <Compile Include="Assets\Scripts\SceneChange.cs" />
+    <Compile Include="Assets\Scripts\ScoreData.cs" />
     <Compile Include="Assets\Scripts\UserMenuButtonFunctionalities.cs" />
     <Compile Include="Assets\Vuforia\Scripts\DefaultInitializationErrorHandler.cs" />
     <Compile Include="Assets\Vuforia\Scripts\DefaultTrackableEventHandler.cs" />
