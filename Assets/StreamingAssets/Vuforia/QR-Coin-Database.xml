@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
+  <Tracking>
+    <ImageTarget name="GoldCoin7" size="5.000000 5.000000" />
+    <ImageTarget name="GoldCoin10" size="5.000000 5.000000" />
+    <ImageTarget name="GoldCoin9" size="5.000000 5.000000" />
+    <ImageTarget name="GoldCoin8" size="5.000000 5.000000" />
+    <ImageTarget name="GoldCoin6" size="5.000000 5.000000" />
+    <ImageTarget name="GoldCoin5" size="5.000000 5.000000" />
+    <ImageTarget name="GoldCoin4" size="5.000000 5.000000" />
+    <ImageTarget name="GoldCoin3" size="5.000000 5.000000" />
+    <ImageTarget name="GoldCoin2" size="5.000000 5.000000" />
+    <ImageTarget name="GoldCoin1" size="5.000000 5.000000" />
+    <ImageTarget name="silverCoin15" size="5.000000 5.000000" />
+    <ImageTarget name="silverCoin14" size="5.000000 5.000000" />
+    <ImageTarget name="silverCoin13" size="5.000000 5.000000" />
+    <ImageTarget name="silverCoin12" size="5.000000 5.000000" />
+    <ImageTarget name="silverCoin11" size="5.000000 5.000000" />
+    <ImageTarget name="silverCoin10" size="5.000000 5.000000" />
+    <ImageTarget name="silverCoin9" size="5.000000 5.000000" />
+    <ImageTarget name="silverCoin8" size="5.000000 5.000000" />
+    <ImageTarget name="silverCoin7" size="5.000000 5.000000" />
+    <ImageTarget name="silverCoin6" size="5.000000 5.000000" />
+    <ImageTarget name="silverCoin5" size="5.000000 5.000000" />
+    <ImageTarget name="silverCoin4" size="5.000000 5.000000" />
+    <ImageTarget name="silverCoin3" size="5.000000 5.000000" />
+    <ImageTarget name="silverCoin2" size="5.000000 5.000000" />
+    <ImageTarget name="silverCoin1" size="5.000000 5.000000" />
+  </Tracking>
+</QCARConfig>
