@@ -1969,6 +1969,8 @@ MonoBehaviour:
   - {fileID: 1390609414}
   - {fileID: 1459644421}
   - {fileID: 1559829700}
+  areYouSureCanvas: {fileID: 0}
+  areYouSureText: {fileID: 0}
 --- !u!1 &1631355239
 GameObject:
   m_ObjectHideFlags: 0

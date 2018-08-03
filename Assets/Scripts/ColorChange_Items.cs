@@ -27,21 +27,16 @@ public class ColorChange_Items : MonoBehaviour
 
             ScoreData scoreData = (ScoreData)bf.Deserialize(scoreDataFile);
             scoreDataFile.Close();
-
-
-
+            
             Text BronzeCoinCountText = GameObject.Find("BronzeCoinCountText").GetComponent<Text>();
             BronzeCoinCountText.text = "Bronze: " + scoreData.bronzeCoinCount;
-
-
+            
             Text SilverCoinCountText = GameObject.Find("SilverCoinCountText").GetComponent<Text>();
             SilverCoinCountText.text = "Silver: " + scoreData.silverCoinCount;
-
-
+            
             Text GoldCoinCountText = GameObject.Find("GoldCoinCountText").GetComponent<Text>();
             GoldCoinCountText.text = "Gold: " + scoreData.goldCoinCount;
-
-
+            
         }
 
     }

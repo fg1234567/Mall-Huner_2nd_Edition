@@ -24,8 +24,8 @@ public class ItemCollection : MonoBehaviour {
     Animator fadeOutAnim;
 
     public Animator endGameAnim;
-    public Animator itemNumberAnim;
-    public Text itemNumber_Text;
+
+    public Text youHaveCollectedText;
 
     public CanvasGroup itemCanvas;
     public CanvasGroup giftCanvas;
@@ -39,6 +39,12 @@ public class ItemCollection : MonoBehaviour {
 
     public FileStream scoreDataFile;
     public ScoreData scoreData;
+
+    public GameObject youHaveCollectedGameObject;
+
+    public Button[] buttons;
+    
+
     //public BinaryFormatter bf = new BinaryFormatter();
 
     public void Awake () {
@@ -59,24 +65,42 @@ public class ItemCollection : MonoBehaviour {
             scoreDataFile = File.Open(Application.persistentDataPath + "/scoreData.dat", FileMode.Open);
             scoreData = (ScoreData)bf.Deserialize(scoreDataFile);
             scoreDataFile.Close();
+            
 
-
-
-            Text BronzeCount = GameObject.Find("BronzeCountText").GetComponent<Text>();
+            /*Text BronzeCount = GameObject.Find("BronzeCountText").GetComponent<Text>();
             BronzeCount.text = "Bronze: " + scoreData.bronzeCoinCount;
 
             Text SilverCount = GameObject.Find("SilverCountText").GetComponent<Text>();
             SilverCount.text = "Silver: " + scoreData.silverCoinCount;
 
             Text GoldCount = GameObject.Find("GoldCountText").GetComponent<Text>();
-            GoldCount.text = "Gold: " + scoreData.goldCoinCount;
+            GoldCount.text = "Gold: " + scoreData.goldCoinCount;*/
+
+
+            foreach (Button defButton in buttons)
+            {
+                string buttonTagString = defButton.tag;
+                int buttonTagInt;
+                int.TryParse(buttonTagString, out buttonTagInt);
+
+                if (scoreData.currentCoinScore < buttonTagInt)
+                {
+                    Image giftPanel = GameObject.FindGameObjectWithTag(defButton.tag).GetComponent<Image>();
+                    giftPanel.color = Color.white;
+                }
+                else
+                {
+                    Image giftPanel = GameObject.FindGameObjectWithTag(defButton.tag).GetComponent<Image>();
+                    giftPanel.color = Color.green;
+                }
+            }
 
         }
     }
 
     private void UpdateItemsHolderPanel(string coinTag){ // updates ItemsHolderPanel according to coinTag when new coin is collected
 
-        if(coinTag == "bronzeCoin"){
+        /*if(coinTag == "bronzeCoin"){
             
             Text BronzeCount = GameObject.Find("BronzeCountText").GetComponent<Text>();
             BronzeCount.text = "Bronze: " + scoreData.bronzeCoinCount;
@@ -90,16 +114,33 @@ public class ItemCollection : MonoBehaviour {
             
             Text GoldCount = GameObject.Find("GoldCountText").GetComponent<Text>();
             GoldCount.text = "Gold: " + scoreData.goldCoinCount;
+        }*/
+
+        foreach (Button defButton in buttons)
+        {
+            string buttonTagString = defButton.tag;
+            int buttonTagInt;
+            int.TryParse(buttonTagString, out buttonTagInt);
+
+            if (scoreData.currentCoinScore < buttonTagInt)
+            {
+                Image giftPanel = GameObject.FindGameObjectWithTag(defButton.tag).GetComponent<Image>();
+                giftPanel.color = Color.white;
+            }
+            else
+            {
+                Image giftPanel = GameObject.FindGameObjectWithTag(defButton.tag).GetComponent<Image>();
+                giftPanel.color = Color.green;
+            }
         }
-
-
-
     }
 
     private void Update () {
                
         //Checks whether the mouse left button is pressed
         if (Input.GetMouseButtonDown(0)){
+
+            youHaveCollectedGameObject.SetActive(false);
 
             if (EventSystem.current.currentSelectedGameObject.name == "UselessButton")
             {
@@ -127,8 +168,8 @@ public class ItemCollection : MonoBehaviour {
 
                         BinaryFormatter bf = new BinaryFormatter();
                        
-                        scoreDataFile = File.Open(Application.persistentDataPath + "/scoreData.dat", FileMode.Open);
-                        scoreData = (ScoreData)bf.Deserialize(scoreDataFile);
+                        //scoreDataFile = File.Open(Application.persistentDataPath + "/scoreData.dat", FileMode.Open);
+                        //scoreData = (ScoreData)bf.Deserialize(scoreDataFile);
 
                         Debug.Log("Touched bronzeCoinCount: " + scoreData.bronzeCoinCount);
                         Debug.Log("Touched silverCoinCount: " + scoreData.silverCoinCount);
@@ -153,6 +194,22 @@ public class ItemCollection : MonoBehaviour {
                             bf.Serialize(scoreDataFile, scoreData);
                             fadeOutAnim.enabled = true;
                             scoreDataFile.Close();
+
+                            youHaveCollectedGameObject.SetActive(true);
+
+                            if(touchedObj.tag == "goldCoin")
+                            {
+                                youHaveCollectedText.text = "You have collected a gold coin" ;
+                            }
+                            else if (touchedObj.tag == "silverCoin")
+                            {
+                                youHaveCollectedText.text = "You have collected a silver coin";
+                            }
+                            else if (touchedObj.tag == "bronzeCoin")
+                            {
+                                youHaveCollectedText.text = "You have collected a bronze coin";
+                            }
+
                         }
 
                         Debug.Log("Touched 2 bronzeCoinCount: " + scoreData.bronzeCoinCount);
@@ -162,28 +219,18 @@ public class ItemCollection : MonoBehaviour {
                         scoreDataFile = File.Open(Application.persistentDataPath + "/scoreData.dat", FileMode.Open);
                         scoreData = (ScoreData)bf.Deserialize(scoreDataFile);
 
-                        Debug.Log("Touched 3 bronzeCoinCount: " + scoreData.bronzeCoinCount);
-                        Debug.Log("Touched 3 silverCoinCount: " + scoreData.silverCoinCount);
-                        Debug.Log("Touched 3 goldCoinCount: " + scoreData.goldCoinCount);
-
-                        scoreDataFile.Close();
-
-
-
+                        scoreDataFile.Close();                        
                     }
                     else
                     {
 						print("No animator defined for this object!");
-
 					}
 				}
 			}
 		}
 
         if (Input.GetKey(KeyCode.Escape))
-        {
-            
-
+        {  
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
             Debug.Log(Application.persistentDataPath);
         }

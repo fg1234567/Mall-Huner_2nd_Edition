@@ -17,6 +17,7 @@ public class ScoreData
     public int coinScore;
     public int totalExpense;
     public int currentCoinScore;
+    
 
     public ScoreData()
     {
