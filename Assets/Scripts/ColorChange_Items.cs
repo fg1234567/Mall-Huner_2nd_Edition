@@ -19,7 +19,7 @@ public class ColorChange_Items : MonoBehaviour
 
     public void Start()
     {
-        
+       
         if (File.Exists(Application.persistentDataPath + "/scoreData.dat"))
         {
             BinaryFormatter bf = new BinaryFormatter();
@@ -27,6 +27,8 @@ public class ColorChange_Items : MonoBehaviour
 
             ScoreData scoreData = (ScoreData)bf.Deserialize(scoreDataFile);
             scoreDataFile.Close();
+
+
 
             Text BronzeCoinCountText = GameObject.Find("BronzeCoinCountText").GetComponent<Text>();
             BronzeCoinCountText.text = "Bronze: " + scoreData.bronzeCoinCount;
@@ -39,12 +41,8 @@ public class ColorChange_Items : MonoBehaviour
             Text GoldCoinCountText = GameObject.Find("GoldCoinCountText").GetComponent<Text>();
             GoldCoinCountText.text = "Gold: " + scoreData.goldCoinCount;
 
-            // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
         }
-        
-        
-
 
     }
 }

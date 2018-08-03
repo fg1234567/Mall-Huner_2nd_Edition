@@ -71,12 +71,6 @@ public class ItemCollection : MonoBehaviour {
             Text GoldCount = GameObject.Find("GoldCountText").GetComponent<Text>();
             GoldCount.text = "Gold: " + scoreData.goldCoinCount;
 
-
-            // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-
-            // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
         }
     }
 
@@ -133,7 +127,6 @@ public class ItemCollection : MonoBehaviour {
 
                         BinaryFormatter bf = new BinaryFormatter();
                        
-                        // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                         scoreDataFile = File.Open(Application.persistentDataPath + "/scoreData.dat", FileMode.Open);
                         scoreData = (ScoreData)bf.Deserialize(scoreDataFile);
 
@@ -146,8 +139,8 @@ public class ItemCollection : MonoBehaviour {
                         if(scoreData.Contains(touchedObj.name, touchedObj.tag))
                         {
                             print("Item already collected!");
-                            //fadeOutAnim.enabled = false;
-                            //scoreDataFile.Close();
+                            fadeOutAnim.enabled = false;
+                            scoreDataFile.Close();
                         } else{
                             
                             scoreDataFile = File.Open(Application.persistentDataPath + "/scoreData.dat", FileMode.Open);
@@ -236,15 +229,7 @@ public class ItemCollection : MonoBehaviour {
             itemCanvas.alpha = 0f;
             isItemHolderOpen = false;
         }
-
-        /*
-        for (int i = 0; i < numbOfCollectedItems; i++)
-        {
-            Image image = GameObject.Find("giftPanel" + i).GetComponent<Image>();
-            image.color = UnityEngine.Color.green;
-        }
-        */
-
+        
     }
 
 

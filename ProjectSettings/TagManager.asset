@@ -7,6 +7,13 @@ TagManager:
   - bronzeCoin
   - silverCoin
   - goldCoin
+  - 10
+  - 40
+  - 90
+  - 140
+  - 200
+  - 230
+  - 340
   layers:
   - Default
   - TransparentFX

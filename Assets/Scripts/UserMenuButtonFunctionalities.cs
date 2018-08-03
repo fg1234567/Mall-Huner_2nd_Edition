@@ -16,6 +16,22 @@ using UnityEngine.SceneManagement;
 
 public class UserMenuButtonFunctionalities : MonoBehaviour {
 
+    private void Start()
+    {
+        FileStream file1 = File.Open(Application.persistentDataPath + "/playerInfo.dat", FileMode.Open);
+        FileStream file2 = File.Open(Application.persistentDataPath + "/scoreData.dat", FileMode.Open);
+
+
+        BinaryFormatter bf = new BinaryFormatter();
+        PlayerInfo data1 = (PlayerInfo)bf.Deserialize(file1);
+        ScoreData data2 = (ScoreData)bf.Deserialize(file2);
+        file1.Close();
+        file2.Close();
+
+        Debug.Log(data1.userEmail);
+        Debug.Log(data2.bronzeCoinCount);
+
+    }
     public void Update()
     {
         if (Input.GetKey(KeyCode.Escape))

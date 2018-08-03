@@ -94,23 +94,23 @@ public class DefaultTrackableEventHandler : MonoBehaviour, ITrackableEventHandle
         if (File.Exists(Application.persistentDataPath + "/scoreData.dat"))
         {
 
-            print("TEST123");
+            //print("TEST123");
 
             scoreDataFile = File.Open(Application.persistentDataPath + "/scoreData.dat", FileMode.Open);
             
-            print("TEST456");
+            //print("TEST456");
             
             scoreData = (ScoreData)bf.Deserialize(scoreDataFile);
             
-            print("TEST789");
+            //print("TEST789");
             
             scoreDataFile.Close();
 
 
-            print("TAG and Name");
+            //print("TAG and Name");
             
-            print(colliderComponents[0].tag);
-            print(colliderComponents[0].name);
+            //print(colliderComponents[0].tag);
+            //print(colliderComponents[0].name);
             
 
             if(scoreData.Contains(colliderComponents[0].name, colliderComponents[0].tag))

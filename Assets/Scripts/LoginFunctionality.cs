@@ -26,7 +26,7 @@ public class LoginFunctionality : MonoBehaviour {
         {
             playerInfoFile = File.Create(Application.persistentDataPath + "/playerInfo.dat");
             scoreDataFile = File.Create(Application.persistentDataPath + "/scoreData.dat");
-            
+                        
         }
         else
         {

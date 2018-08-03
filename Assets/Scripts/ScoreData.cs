@@ -15,6 +15,8 @@ public class ScoreData
     public int silverCoinCount;
     public int goldCoinCount;
     public int coinScore;
+    public int totalExpense;
+    public int currentCoinScore;
 
     public ScoreData()
     {
@@ -25,6 +27,8 @@ public class ScoreData
         silverCoinCount = 0;
         goldCoinCount = 0;
         coinScore = 0;
+        totalExpense = 0;
+        currentCoinScore = 0;
     }
 
     public void CollectCoin(string coinName, string coinTag)
@@ -55,8 +59,8 @@ public class ScoreData
         Debug.Log("goldCoinCount: " + goldCoinCount);
 
         //calculating coin score
-        coinScore = (bronzeCoinCount * 10) + (silverCoinCount * 30) + (goldCoinCount * 50);
-
+        coinScore = (bronzeCoinCount * 10) + (silverCoinCount * 30) + (goldCoinCount * 50); //Total expense is sum all pourchased gifts
+        currentCoinScore = coinScore - totalExpense;
 
     }
 
@@ -91,9 +95,11 @@ public class ScoreData
         }
     }
 
-
-
-
+    public void IncreaseTotalExpense(int giftValue)
+    {
+        totalExpense += giftValue;
+        currentCoinScore = coinScore - totalExpense;    
+    }
 
 
 

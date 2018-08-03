@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
+  <Tracking>
+    <ImageTarget name="BronzeCoin20" size="5.000000 5.000000" />
+    <ImageTarget name="BronzeCoin19" size="5.000000 5.000000" />
+    <ImageTarget name="BronzeCoin18" size="5.000000 5.000000" />
+    <ImageTarget name="BronzeCoin17" size="5.000000 5.000000" />
+    <ImageTarget name="BronzeCoin16" size="5.000000 5.000000" />
+    <ImageTarget name="BronzeCoin15" size="5.000000 5.000000" />
+    <ImageTarget name="BronzeCoin14" size="5.000000 5.000000" />
+    <ImageTarget name="BronzeCoin13" size="5.000000 5.000000" />
+    <ImageTarget name="BronzeCoin12" size="5.000000 5.000000" />
+    <ImageTarget name="BronzeCoin11" size="5.000000 5.000000" />
+    <ImageTarget name="BronzeCoin10" size="5.000000 5.000000" />
+    <ImageTarget name="BronzeCoin9" size="5.000000 5.000000" />
+    <ImageTarget name="BronzeCoin8" size="5.000000 5.000000" />
+    <ImageTarget name="BronzeCoin7" size="5.000000 5.000000" />
+    <ImageTarget name="BronzeCoin6" size="5.000000 5.000000" />
+    <ImageTarget name="BronzeCoin5" size="5.000000 5.000000" />
+    <ImageTarget name="BronzeCoin4" size="5.000000 5.000000" />
+    <ImageTarget name="BronzeCoin3" size="5.000000 5.000000" />
+    <ImageTarget name="BronzeCoin2" size="5.000000 5.000000" />
+    <ImageTarget name="BronzeCoin1" size="5.000000 5.000000" />
+  </Tracking>
+</QCARConfig>
