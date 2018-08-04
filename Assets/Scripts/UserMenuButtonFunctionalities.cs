@@ -62,6 +62,12 @@ public class UserMenuButtonFunctionalities : MonoBehaviour {
         SceneManager.LoadScene(5);
     }
 
+    public void InstructionsButtonClick()
+    {
+        SceneManager.LoadScene(7);
+    }
+
+
     public void ResetButtonClick()
     {
         if (File.Exists(Application.persistentDataPath + "/scoreData.dat"))

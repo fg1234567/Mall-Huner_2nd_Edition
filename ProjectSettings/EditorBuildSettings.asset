@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/AreYouSureScene.unity
     guid: 30a299bdd89482c4ba9d43992fdd60a1
+  - enabled: 1
+    path: Assets/Scenes/Instructions.unity
+    guid: 113ffd00ff9f80644a99bf7364831ff6
   m_configObjects: {}
