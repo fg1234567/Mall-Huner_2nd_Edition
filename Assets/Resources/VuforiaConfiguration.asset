@@ -61,7 +61,7 @@ MonoBehaviour:
     autoInitTracker: 0
     autoStartTracker: 0
   webcam:
-    deviceNameSetInEditor: HP Truevision HD
+    deviceNameSetInEditor: HD WebCam
     flipHorizontally: 1
     turnOffWebCam: 0
     renderTextureLayer: 30

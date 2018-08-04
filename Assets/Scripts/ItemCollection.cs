@@ -180,7 +180,7 @@ public class ItemCollection : MonoBehaviour {
                         if(scoreData.Contains(touchedObj.name, touchedObj.tag))
                         {
                             print("Item already collected!");
-                            fadeOutAnim.enabled = false;
+                            //fadeOutAnim.enabled = false;
                             scoreDataFile.Close();
                         } else{
                             
@@ -192,7 +192,11 @@ public class ItemCollection : MonoBehaviour {
                             UpdateItemsHolderPanel(touchedObj.tag);
 
                             bf.Serialize(scoreDataFile, scoreData);
-                            fadeOutAnim.enabled = true;
+
+                            //fadeOutAnim.enabled = true;
+
+                            fadeOutAnim.SetTrigger("fadeOutTrigger");
+
                             scoreDataFile.Close();
 
                             youHaveCollectedGameObject.SetActive(true);

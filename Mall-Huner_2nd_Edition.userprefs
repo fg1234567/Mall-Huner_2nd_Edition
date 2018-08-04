@@ -1,8 +1,9 @@
 ﻿<Properties StartupItem="Assembly-CSharp-firstpass.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\LoginFunctionality.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\ItemCollection.cs">
     <Files>
-      <File FileName="Assets\Scripts\LoginFunctionality.cs" Line="119" Column="1" />
+      <File FileName="Assets\Scripts\LoginFunctionality.cs" Line="75" Column="1" />
+      <File FileName="Assets\Scripts\ItemCollection.cs" Line="198" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

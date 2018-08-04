@@ -118,10 +118,14 @@ public class DefaultTrackableEventHandler : MonoBehaviour, ITrackableEventHandle
                 print("Vuforia Item already collected!");
                 foreach (var component in rendererComponents)
                 {
+
                     component.enabled = true;
+
+
                     Color color = component.GetComponent<Renderer>().material.color;
                     color.a = 0.40f; //approximately 100/255
                     component.GetComponent<Renderer>().material.color = color;
+                    
                 }
 
             } else{
@@ -131,6 +135,10 @@ public class DefaultTrackableEventHandler : MonoBehaviour, ITrackableEventHandle
                 foreach (var component in rendererComponents)
                 {
                     component.enabled = true;
+
+                    component.GetComponent<Animator>().enabled = true; // if item is collected we disable the rotation animation
+
+
                     Color color = component.GetComponent<Renderer>().material.color;
                     color.a = 1.00f; //approximately 100/255
                     component.GetComponent<Renderer>().material.color = color;
