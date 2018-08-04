@@ -61,10 +61,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\ApproveScript.cs" />
+    <Compile Include="Assets\Scripts\ApproveScript.cs" />
     <Compile Include="Assets\Scripts\ChangeColor_PositionIcons.cs" />
     <Compile Include="Assets\Scripts\CollorChange_Gifts.cs" />
     <Compile Include="Assets\Scripts\ColorChange_Items.cs" />
+    <Compile Include="Assets\Scripts\GiftData.cs" />
     <Compile Include="Assets\Scripts\ItemCollection.cs" />
     <Compile Include="Assets\Scripts\LoginFunctionality.cs" />
     <Compile Include="Assets\Scripts\PlayerInfo.cs" />

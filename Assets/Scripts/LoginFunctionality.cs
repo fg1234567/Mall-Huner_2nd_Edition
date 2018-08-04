@@ -17,7 +17,7 @@ public class LoginFunctionality : MonoBehaviour {
 
     public InputField userNameInput;
     public InputField userEmailInput;
-    public FileStream playerInfoFile, scoreDataFile;
+    public FileStream playerInfoFile, scoreDataFile, giftDataFile;
     
 
     public void Start()
@@ -26,7 +26,8 @@ public class LoginFunctionality : MonoBehaviour {
         {
             playerInfoFile = File.Create(Application.persistentDataPath + "/playerInfo.dat");
             scoreDataFile = File.Create(Application.persistentDataPath + "/scoreData.dat");
-                        
+            giftDataFile = File.Create(Application.persistentDataPath + "/giftData.dat");
+        
         }
         else
         {
@@ -40,6 +41,7 @@ public class LoginFunctionality : MonoBehaviour {
         BinaryFormatter bf = new BinaryFormatter();
         PlayerInfo playerData = new PlayerInfo();
         ScoreData scoreData = new ScoreData();
+        GiftData giftData = new GiftData();
 
         if (userNameInput.text != null && userEmailInput.text != null)
         {
@@ -51,9 +53,12 @@ public class LoginFunctionality : MonoBehaviour {
 
             bf.Serialize(playerInfoFile, playerData);
             bf.Serialize(scoreDataFile, scoreData);
+            bf.Serialize(giftDataFile, giftData);
+
 
             playerInfoFile.Close();
             scoreDataFile.Close();
+            giftDataFile.Close();
             
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }

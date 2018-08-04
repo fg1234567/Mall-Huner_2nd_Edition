@@ -23,6 +23,8 @@ public class CollorChange_Gifts : MonoBehaviour {
     public Text areYouSureText;
 
     public string currentButtonTag;
+    public string currentButtonName;
+
 
     public void Start()
     {
@@ -59,7 +61,7 @@ public class CollorChange_Gifts : MonoBehaviour {
 
     public void anyButtonClick()
     {
-
+        currentButtonName = EventSystem.current.currentSelectedGameObject.name;
         currentButtonTag = EventSystem.current.currentSelectedGameObject.tag;
         DontDestroyOnLoad(this.gameObject);
         Debug.Log(currentButtonTag);

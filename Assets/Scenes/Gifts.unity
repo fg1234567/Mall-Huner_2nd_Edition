@@ -271,7 +271,7 @@ GameObject:
   - component: {fileID: 765710776}
   - component: {fileID: 765710775}
   m_Layer: 5
-  m_Name: GiftButton_3
+  m_Name: "\xC7orba"
   m_TagString: 90
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -444,7 +444,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 70
+    m_FontSize: 55
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -455,7 +455,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: gift(140)
+  m_Text: Makarna (140)
 --- !u!222 &900245412
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -824,10 +824,10 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 70
+    m_FontSize: 55
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 7
+    m_MinSize: 5
     m_MaxSize: 70
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -835,7 +835,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: gift(340)
+  m_Text: 1 gr Havyar (340)
 --- !u!222 &1096422515
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -902,10 +902,10 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 70
+    m_FontSize: 55
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 7
+    m_MinSize: 5
     m_MaxSize: 70
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -913,7 +913,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: gift(200)
+  m_Text: Pide (200)
 --- !u!222 &1181228810
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1121,7 +1121,7 @@ GameObject:
   - component: {fileID: 1390609415}
   - component: {fileID: 1390609414}
   m_Layer: 5
-  m_Name: GiftButton_5
+  m_Name: Pide
   m_TagString: 200
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1248,7 +1248,7 @@ GameObject:
   - component: {fileID: 1459644422}
   - component: {fileID: 1459644421}
   m_Layer: 5
-  m_Name: GiftButton_6
+  m_Name: Kebap
   m_TagString: 230
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1375,7 +1375,7 @@ GameObject:
   - component: {fileID: 1484028780}
   - component: {fileID: 1484028779}
   m_Layer: 5
-  m_Name: GiftButton_2
+  m_Name: Waffle
   m_TagString: 40
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1548,10 +1548,10 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 70
+    m_FontSize: 55
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 7
+    m_MinSize: 5
     m_MaxSize: 70
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -1559,7 +1559,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: gift(230)
+  m_Text: Kebap (230)
 --- !u!222 &1485305199
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1580,7 +1580,7 @@ GameObject:
   - component: {fileID: 1559829701}
   - component: {fileID: 1559829700}
   m_Layer: 5
-  m_Name: GiftButton_7
+  m_Name: 1 gr Havyar
   m_TagString: 340
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1707,7 +1707,7 @@ GameObject:
   - component: {fileID: 1571187001}
   - component: {fileID: 1571187000}
   m_Layer: 5
-  m_Name: GiftButton_1
+  m_Name: Coca-Cola
   m_TagString: 10
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1880,10 +1880,10 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 70
+    m_FontSize: 55
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 7
+    m_MinSize: 5
     m_MaxSize: 70
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -1891,7 +1891,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: gift(40)
+  m_Text: Waffle (40)
 --- !u!222 &1573322258
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1971,6 +1971,8 @@ MonoBehaviour:
   - {fileID: 1559829700}
   areYouSureCanvas: {fileID: 0}
   areYouSureText: {fileID: 0}
+  currentButtonTag: 
+  currentButtonName: 
 --- !u!1 &1631355239
 GameObject:
   m_ObjectHideFlags: 0
@@ -1984,7 +1986,7 @@ GameObject:
   - component: {fileID: 1631355242}
   - component: {fileID: 1631355241}
   m_Layer: 5
-  m_Name: GiftButton_4
+  m_Name: Makarna
   m_TagString: 140
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2330,10 +2332,10 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 70
+    m_FontSize: 55
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 7
+    m_MinSize: 5
     m_MaxSize: 70
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -2341,7 +2343,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: gift(90)
+  m_Text: "\xC7orba (90)"
 --- !u!222 &1739209315
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2408,10 +2410,10 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 70
+    m_FontSize: 55
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 7
+    m_MinSize: 5
     m_MaxSize: 70
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -2419,7 +2421,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: gift(10)
+  m_Text: Coca-Cola (10)
 --- !u!222 &1849369408
 CanvasRenderer:
   m_ObjectHideFlags: 0

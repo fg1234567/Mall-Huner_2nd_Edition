@@ -378,12 +378,12 @@ GameObject:
   - component: {fileID: 968925052}
   - component: {fileID: 968925051}
   m_Layer: 5
-  m_Name: YourItemsButton
+  m_Name: CollectedItemsButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &968925050
 RectTransform:
   m_ObjectHideFlags: 0
@@ -880,7 +880,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1695913334
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1203,8 +1203,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.0000076293945, y: -156}
-  m_SizeDelta: {x: 332.4, y: 79.2}
+  m_AnchoredPosition: {x: 0, y: -113}
+  m_SizeDelta: {x: 393.4, y: 120.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1734333565
 MonoBehaviour:
@@ -1617,7 +1617,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.23584908, g: 0.16619714, b: 0.021137413, a: 0.85882354}
+  m_Color: {r: 0.3962264, g: 0.2953008, b: 0.08784264, a: 0.78431374}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1626,11 +1626,11 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 50
+    m_FontSize: 70
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 4
-    m_MaxSize: 50
+    m_MinSize: 0
+    m_MaxSize: 70
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
